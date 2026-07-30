@@ -1,7 +1,9 @@
 import 'package:cinemax/core/theme/app_text_theme.dart';
 import 'package:cinemax/core/ui/components/app_button.dart';
 import 'package:cinemax/core/ui/components/app_text.dart';
+import 'package:cinemax/core/ui/extensions/app_spacing_extension.dart';
 import 'package:cinemax/core/ui/layouts/app_scaffold.dart';
+import 'package:cinemax/core/variables/app_radius.dart';
 import 'package:cinemax/core/variables/app_svgs.dart';
 import 'package:cinemax/core/variables/colors.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,32 @@ class PaymentMethod extends StatefulWidget {
 }
 
 class _PaymentMethodState extends State<PaymentMethod> {
+  bool isSelected = false;
+  int selectedIndex = 0;
+
+  List<Map<String, dynamic>> paymentMethod = [
+    {
+      'image': AppSvgs.kStreamlineBankRemix,
+      'title': 'Bank Transfer',
+    },
+    {
+      'image': AppSvgs.kSimpleIconsGooglepay,
+      'title': 'Google Pay',
+    },
+    {
+      'image': AppSvgs.kMagePaypal,
+      'title': 'Paypal',
+    },
+    {
+      'image': AppSvgs.kMingcuteBankCardFill,
+      'title': 'Credit or Debit Card',
+    },
+    {
+      'image': AppSvgs.kPlus,
+      'title': 'Add New Card',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -47,7 +75,79 @@ class _PaymentMethodState extends State<PaymentMethod> {
         ),
       ),
       body: Column(
-        children: [],
+        children: [
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.8,
+            child: ListView.separated(
+              separatorBuilder: (context, index) => 24.verticalSpacing,
+              itemCount: paymentMethod.length,
+              itemBuilder: (context, index) {
+                final payment = paymentMethod[index];
+                return _buildPayMethodCard(
+                  index,
+                  payment['image'] as String,
+                  payment['title'] as String,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPayMethodCard(int index, String image, String title) {
+    final isSelected = selectedIndex == index;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? AppColors.kMagentaBloom500.withValues(alpha: 0.25)
+              : AppColors.kCarbonBlack,
+          borderRadius: AppRadius.extraLargeRadius,
+          border: BoxBorder.all(
+            color: isSelected
+                ? AppColors.kWildStrawberry300.withValues(alpha: 0.25)
+                : AppColors.kGunmental800,
+            width: 2,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.kMagentaBloom500,
+                borderRadius: AppRadius.fullRadius,
+              ),
+              child: SvgPicture.asset(
+                image,
+                width: 14,
+                height: 14,
+              ),
+            ),
+            16.horizontalSpacing,
+            AppText(
+              title,
+              style: appTextTheme.titleMedium?.copyWith(
+                fontSize: 18,
+                color: AppColors.kWhite,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const Spacer(),
+            SvgPicture.asset(
+              AppSvgs.kChevronRight,
+            ),
+          ],
+        ),
       ),
     );
   }

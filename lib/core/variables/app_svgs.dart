@@ -30,6 +30,7 @@ class AppSvgs {
   static const kChairIcon = 'assets/svg/chair_icon.svg';
   static const kIcRoundEventSeat = 'assets/svg/ic_round-event-seat.svg';
   static const kCalendar = 'assets/svg/calendar.svg';
+  static const kPlus = 'assets/svg/plus.svg';
 
   static const kHome = 'assets/svg/home.svg';
   static const kExplore = 'assets/svg/explore.svg';
