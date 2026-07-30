@@ -1,0 +1,4 @@
+- [x] Update `MovieDetailsRoute` path in `app_router.dart`
+- [x] Update navigation logic in `now_showing_page.dart`
+- [x] Implement UI and data fetching in `movie_details_page.dart`
+- [x] Verify changes (compile check)

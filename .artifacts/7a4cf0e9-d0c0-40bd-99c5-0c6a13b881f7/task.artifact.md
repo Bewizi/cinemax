@@ -1,0 +1,4 @@
+- [x] Fix response data extraction in `movie_data.dart`
+- [x] Verify `MovieModels.fromJson` handles backend data correctly
+- [x] Add base URL handling for images if necessary
+- [x] Verify changes

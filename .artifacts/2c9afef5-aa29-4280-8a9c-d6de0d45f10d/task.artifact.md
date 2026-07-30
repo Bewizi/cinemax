@@ -1,0 +1,6 @@
+- [x] Refactor `ExploreState` to a single class with statuses
+- [x] Update `ExploreBloc` to handle events with `copyWith`
+- [x] Update `TopMovies` to use new state structure
+- [x] Update `LatestMovies` to use new state structure
+- [x] Update `NowShowingPage` to use new state structure
+- [x] Update `MovieDetailsPage` to use new state structure

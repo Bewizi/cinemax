@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "868146607341",
+    "project_id": "oaypay",
+    "storage_bucket": "oaypay.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868146607341:android:b7a478fdd92843b07ac8e4",
+        "android_client_info": {
+          "package_name": "com.example.verygoodcore.cinemax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868146607341-8irqugpglsqdcra8h1lr5ooos1r367rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg3qkwyZWLzAmZBLUyHWAIKmeIwVsOVwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868146607341-8irqugpglsqdcra8h1lr5ooos1r367rf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868146607341-efg3el5gj1m7ej5jo54839tpcrnnsdl2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.verygoodcore.cinemax"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868146607341:android:aaec27e4041b66ed7ac8e4",
+        "android_client_info": {
+          "package_name": "com.example.verygoodcore.cinemax.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868146607341-8irqugpglsqdcra8h1lr5ooos1r367rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg3qkwyZWLzAmZBLUyHWAIKmeIwVsOVwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868146607341-8irqugpglsqdcra8h1lr5ooos1r367rf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868146607341-efg3el5gj1m7ej5jo54839tpcrnnsdl2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.verygoodcore.cinemax"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

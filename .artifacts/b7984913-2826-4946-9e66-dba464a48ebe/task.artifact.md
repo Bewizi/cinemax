@@ -1,0 +1,3 @@
+- [x] Modify `MovieCard` to dynamically display genres
+- [x] Verify changes with `analyze_file`
+- [x] Create walkthrough artifact
