@@ -1,0 +1,4 @@
+- [ ] Update `Api` class with `rootUrl` in `api.dart`
+- [ ] Update `MovieModels` to correctly construct image URLs
+- [ ] Update `HomePage` to trigger `GetMovies` and use dynamic carousel data
+- [ ] Verify image display in Carousel, Top Movies, and Latest Movies sections

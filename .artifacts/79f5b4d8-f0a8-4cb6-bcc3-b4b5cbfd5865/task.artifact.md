@@ -1,0 +1,4 @@
+- [x] Add `heroTag` to `MovieCard` widget
+- [x] Pass movie ID as `heroTag` in `NowShowingPage`
+- [x] Update `MovieDetailsPage` to use movie ID for Hero tag and show image immediately
+- [ ] Verify changes with `analyze_file`
