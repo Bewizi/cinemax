@@ -12,8 +12,10 @@ import 'package:cinemax/features/Explore/presentation/pages/choose_seats.dart';
 import 'package:cinemax/features/Explore/presentation/pages/explore.dart';
 import 'package:cinemax/features/Explore/presentation/pages/movie_details_page.dart';
 import 'package:cinemax/features/Explore/presentation/pages/now_showing_page.dart';
+import 'package:cinemax/features/Explore/presentation/pages/payment/add_card.dart';
 import 'package:cinemax/features/Explore/presentation/pages/payment/payment_checkout.dart';
 import 'package:cinemax/features/Explore/presentation/pages/payment/payment_method.dart';
+import 'package:cinemax/features/Explore/presentation/pages/payment/successful_payment.dart';
 import 'package:cinemax/features/GetStarted/getstarted.dart';
 import 'package:cinemax/features/Home/presentation/pages/home.dart';
 import 'package:cinemax/features/OnboardingScreen/onboarding.dart';
@@ -159,6 +161,21 @@ class PaymentMethodRoute extends GoRouteData with $PaymentMethodRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const PaymentMethod();
+}
+
+// add new card screen
+@TypedGoRoute<AddCardRoute>(path: '/addCard')
+class AddCardRoute extends GoRouteData with $AddCardRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const AddCard();
+}
+
+// successful payment screen
+@TypedGoRoute<SuccessfulPaymentRoute>(path: '/successfulPayment')
+class SuccessfulPaymentRoute extends GoRouteData with $SuccessfulPaymentRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SuccessfulPayment();
 }
 
 //MAIN APP SHELL WITH BOTTOM NAV  (NESTED ROUTING)
