@@ -13,8 +13,9 @@ class ApiInterceptor extends Interceptor {
     // final prefs = await SharedPreferences.getInstance();
     // final token = prefs.getString('auth_token');
     final token = await secureStorage.read(key: 'auth_token');
+    final user = await secureStorage.read(key: 'auth_user');
 
-    if (token != null) {
+    if (token != null && user != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
 
@@ -28,6 +29,7 @@ class ApiInterceptor extends Interceptor {
   ) async {
     if (err.response?.statusCode == 401) {
       await secureStorage.delete(key: 'auth_token');
+      await secureStorage.delete(key: 'auth_user');
     }
 
     super.onError(err, handler);

@@ -137,8 +137,13 @@ class AuthData implements AuthRepository {
 
   @override
   Future<UserEntity?> getCurrentUser() async {
+    final token = await _secureStorage.read(key: _tokenKey);
     final stored = await _secureStorage.read(key: _userKey);
-    if (stored == null) return null;
+    if (token == null || stored == null) {
+      return null;
+    }
+
+    _apiClient.setToken(token);
     final json = jsonDecode(stored) as Map<String, dynamic>;
     return UserModel.fromJson(json).toEntity();
   }
