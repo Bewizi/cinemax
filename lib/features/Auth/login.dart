@@ -26,6 +26,7 @@ class _LoginState extends State<Login> {
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  bool _isPasswordVisible = false;
 
   void _login() {
     if (_formKey.currentState?.validate() ?? false) {
@@ -36,6 +37,12 @@ class _LoginState extends State<Login> {
         ),
       );
     }
+  }
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
   }
 
   @override
@@ -100,6 +107,21 @@ class _LoginState extends State<Login> {
                                     BlendMode.srcIn,
                                   ),
                                 ),
+                                validator: (value) {
+                                  if (!RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                                  ).hasMatch(value!)) {
+                                    return 'Invalid Email Address';
+                                  }
+                                  if (!value.contains('@')) {
+                                    return 'Please Include @ in Email Address';
+                                  }
+
+                                  if (value.isEmpty) {
+                                    return 'Email Address is required';
+                                  }
+                                  return null;
+                                },
                               ),
                               24.verticalSpacing,
 
@@ -117,6 +139,23 @@ class _LoginState extends State<Login> {
                                         BlendMode.srcIn,
                                       ),
                                     ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _isPasswordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: AppColors.kCharcoal700,
+                                      ),
+                                      onPressed: _togglePasswordVisibility,
+                                    ),
+                                    obscureText: !_isPasswordVisible,
+                                    validator: (value) {
+                                      if (value!.length < 8) {
+                                        return 'Password must be at least 8 '
+                                            'characters long';
+                                      }
+                                      return null;
+                                    },
                                   ),
                                   24.verticalSpacing,
                                   _forgotPassword(),

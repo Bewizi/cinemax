@@ -15,6 +15,7 @@ class AppTextField extends StatelessWidget {
     this.hintTextColor,
     this.prefixIconSize,
     this.validator,
+    this.obscureText = false,
     super.key,
   });
 
@@ -26,6 +27,7 @@ class AppTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final double? prefixIconSize;
   final String? Function(String?)? validator;
+  final bool obscureText;
 
   Widget _buildTextField(BuildContext context) {
     return TextFormField(
@@ -73,6 +75,7 @@ class AppTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
       ),
       validator: validator,
+      obscureText: obscureText,
     );
   }
 
