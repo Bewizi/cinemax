@@ -28,6 +28,8 @@ class _SignupState extends State<Signup> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmpassword = TextEditingController();
   bool _isFormValid = false;
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
 
   @override
   void initState() {
@@ -89,6 +91,18 @@ class _SignupState extends State<Signup> {
     _password.dispose();
     _confirmpassword.dispose();
     super.dispose();
+  }
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+    });
   }
 
   @override
@@ -172,7 +186,7 @@ class _SignupState extends State<Signup> {
                                 },
                               ),
                               24.verticalSpacing,
-            
+
                               AppTextField(
                                 controller: _email,
                                 hintText: 'Email',
@@ -193,7 +207,7 @@ class _SignupState extends State<Signup> {
                                   if (!value.contains('@')) {
                                     return 'Please Include @ in Email Address';
                                   }
-            
+
                                   if (value.isEmpty) {
                                     return 'Email Address is required';
                                   }
@@ -201,10 +215,46 @@ class _SignupState extends State<Signup> {
                                 },
                               ),
                               24.verticalSpacing,
-            
+
                               AppTextField(
                                 controller: _password,
                                 hintText: 'Password',
+                                prefixIconSize: 24,
+                                obscureText: !_isPasswordVisible,
+                                prefixIcon: SvgPicture.asset(
+                                  AppSvgs.kLock,
+                                  colorFilter: const ColorFilter.mode(
+                                    AppColors.kCharcoal700,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: AppColors.kCharcoal700,
+                                  ),
+                                  onPressed: _togglePasswordVisibility,
+                                ),
+                                validator: (value) {
+                                  if (value!.length < 8) {
+                                    return 'Password must be at least '
+                                        '8 characters';
+                                  }
+
+                                  if (value.isEmpty) {
+                                    return 'Password is required';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              24.verticalSpacing,
+
+                              AppTextField(
+                                controller: _confirmpassword,
+                                hintText: 'Confirm Password',
+                                obscureText: !_isConfirmPasswordVisible,
                                 prefixIconSize: 24,
                                 prefixIcon: SvgPicture.asset(
                                   AppSvgs.kLock,
@@ -213,30 +263,14 @@ class _SignupState extends State<Signup> {
                                     BlendMode.srcIn,
                                   ),
                                 ),
-                                validator: (value) {
-                                  if (value!.length < 8) {
-                                    return 'Password must be at least '
-                                        '8 characters';
-                                  }
-            
-                                  if (value.isEmpty) {
-                                    return 'Password is required';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              24.verticalSpacing,
-            
-                              AppTextField(
-                                controller: _confirmpassword,
-                                hintText: 'Confirm Password',
-                                prefixIconSize: 24,
-                                prefixIcon: SvgPicture.asset(
-                                  AppSvgs.kLock,
-                                  colorFilter: const ColorFilter.mode(
-                                    AppColors.kCharcoal700,
-                                    BlendMode.srcIn,
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _isConfirmPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: AppColors.kCharcoal700,
                                   ),
+                                  onPressed: _toggleConfirmPasswordVisibility,
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -282,7 +316,7 @@ class _SignupState extends State<Signup> {
                         );
                       },
                     ),
-            
+
                     64.verticalSpacing,
                     BlocBuilder<AuthBloc, AuthState>(
                       builder: (context, state) {
@@ -294,9 +328,9 @@ class _SignupState extends State<Signup> {
                         );
                       },
                     ),
-            
+
                     24.verticalSpacing,
-            
+
                     Center(
                       child: AppRichText(
                         style: appTextTheme.titleMedium?.copyWith(
