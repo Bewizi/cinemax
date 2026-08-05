@@ -17,6 +17,8 @@ List<RouteBase> get $appRoutes => [
   $chooseSeatsRoute,
   $paymentCheckoutRoute,
   $paymentMethodRoute,
+  $addCardRoute,
+  $successfulPaymentRoute,
   $appShellRouteData,
 ];
 
@@ -276,6 +278,59 @@ mixin $PaymentMethodRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/paymentMethod');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $addCardRoute => GoRouteData.$route(
+  path: '/addCard',
+  hasOverriddenOnExit: false,
+  factory: $AddCardRoute._fromState,
+);
+
+mixin $AddCardRoute on GoRouteData {
+  static AddCardRoute _fromState(GoRouterState state) => AddCardRoute();
+
+  @override
+  String get location => GoRouteData.$location('/addCard');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $successfulPaymentRoute => GoRouteData.$route(
+  path: '/successfulPayment',
+  hasOverriddenOnExit: false,
+  factory: $SuccessfulPaymentRoute._fromState,
+);
+
+mixin $SuccessfulPaymentRoute on GoRouteData {
+  static SuccessfulPaymentRoute _fromState(GoRouterState state) =>
+      SuccessfulPaymentRoute();
+
+  @override
+  String get location => GoRouteData.$location('/successfulPayment');
 
   @override
   void go(BuildContext context) => context.go(location);

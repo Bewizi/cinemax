@@ -52,8 +52,14 @@ class _PaymentMethodState extends State<PaymentMethod> {
         child: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.9,
           child: AppButtonElevated(
-            text: 'Make Payment',
-            onPressed: () => context.push('/paymentMethod'),
+            text: selectedIndex == 4 ? 'Next' : 'Make Payment',
+            onPressed: () async {
+              if (selectedIndex == 4) {
+                await context.push('/addCard');
+              } else {
+                await context.push('/paymentMethod');
+              }
+            },
           ),
         ),
       ),
@@ -100,10 +106,13 @@ class _PaymentMethodState extends State<PaymentMethod> {
     final isSelected = selectedIndex == index;
 
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         setState(() {
           selectedIndex = index;
         });
+        if (index == 4) {
+          await context.push('/addCard');
+        }
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
