@@ -25,7 +25,7 @@ dependencies:
   intl: ^0.20.2
   pinput: ^6.0.2
   shared_preferences: ^2.5.5
-  firebase_auth: ^6.5.5
+  firebase_auth: ^6.5.7
   firebase_core: ^4.12.1
   google_sign_in: ^6.3.0
 
